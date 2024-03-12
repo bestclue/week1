@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <h2>Multiplication Table</h2>
+    <label for="multiplicationSelect">Select a multiplication table:</label>
+    <select id="multiplicationSelect">
+        <option value="0">Select a table</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <div id="multiplicationResult"></div>
+
+    <script>
+        // 함수 정의: 선택한 단의 구구단을 출력
+        function printMultiplicationTable() {
+            // 선택한 단 가져오기
+            var selectedTable = document.getElementById("multiplicationSelect").value;
+            var resultDiv = document.getElementById("multiplicationResult");
+            var consoleOutput = ""; // 콘솔 출력을 위한 변수
+            
+            // 선택한 단의 구구단 출력
+            resultDiv.innerHTML = ""; // 결과를 초기화하여 이전에 출력된 결과를 지움
+            var tableHtml = "<h3>Multiplication Table for " + selectedTable + ":</h3>";
+            tableHtml += "<table border='1'>";
+            for (var i = 1; i <= 9; i++) {
+                tableHtml += "<tr><td>" + selectedTable + " x " + i + "</td><td>=</td><td>" + (selectedTable * i) + "</td></tr>";
+                // 콘솔 출력을 위해 문자열로 저장
+                consoleOutput += selectedTable + " x " + i + " = " + (selectedTable * i) + "\n";
+            }
+            tableHtml += "</table>";
+            resultDiv.innerHTML = tableHtml;
+
+            // 콘솔에도 출력
+            console.log(consoleOutput);
+        }
+
+        // <select> 요소에 change 이벤트 리스너 추가
+        document.getElementById("multiplicationSelect").addEventListener("change", printMultiplicationTable);
+    </script>
+</body>
+</html>
